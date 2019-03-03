@@ -14,7 +14,7 @@ def arc_length(signal: np.ndarray, sample_rate: Union[int, float]) -> float:
     if type(signal) == np.ndarray) and type(sample_rate) == (int or float):
 	return sfeatures.arc_length(signal, sample_rate)
     else:
-        raise ValueError("Wrong file types! Signal should be 1 dimensional numpy array, sample_rare should be int or float.")
+        raise ValueError("Wrong variable types! Signal should be 1 dimensional numpy array, sample_rare should be int or float.")
 
 
 def envelope(signal: np.ndarray) -> np.ndarray:
@@ -27,5 +27,5 @@ def envelope(signal: np.ndarray) -> np.ndarray:
     if type(signal) == np.ndarray:
 	return sfeatures.envelope(signal)
     else:
-	raise ValueError("Wrong file type! Signal should be 1 dimensional numpy array.")
+	raise ValueError("Wrong variable type! Signal should be 1 dimensional numpy array.")
     
