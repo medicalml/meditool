@@ -1,7 +1,6 @@
 import meditool.data_types.signal.features as sfeatures
 from typing import Union
 import numpy as np
-from scipy.signal import hilbert
 
 def arc_length(signal: np.ndarray, sample_rate: Union[int, float]) -> float:
     """Method for calcualting the arc length of an EMG signal using Euclidian distance.
