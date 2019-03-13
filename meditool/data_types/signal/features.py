@@ -1,28 +1,19 @@
 import numpy as np
-import scipy.io.wavfile
-import matplotlib.pyplot as plt
 
 
-
-
-def turns(fp: int,signal :np.ndarray ,const: float) -> int:
+def turns(signal :np.ndarray ,minimal_signal_change: float) -> int:
     """Method for counting number of turns in signal.
-    :param fp: sampling rate
     :param signal:  numpy.ndarray with signal values
-    :param const: parameter that defines multiple of standard deviation. This multiple is a minimum value of signal change which function interprets as a turn.
-    :type fp: int
+    :param minimal_signal_change: parameter that defines multiple of standard deviation. This multiple is a minimum value of signal change which function interprets as a turn.
     :type signal: np.ndarray
-    type const: float
-    :return: Integer. Number of turns in signal bigger than value of standard deviation
+    type minimal_signal_change: float
+    :return: Integer. Number of turns in signal bigger than value of standard deviation multipled by minimal_signal_change parameter
     :rtype: int
     """
-    dl = signal.size
-    dl=dl/fp
-    t = np.arange(0,dl,1/fp)
 
     standard_deviation = np.std(signal)
-    standard_deviation = const*standard_deviation
-    # print(standard_deviation)
+    standard_deviation = minimal_signal_change*standard_deviation
+
     sign1=signal[1]-signal[0]
     sign2=signal[2]-signal[1]
     point0 = signal[0]
@@ -39,8 +30,5 @@ def turns(fp: int,signal :np.ndarray ,const: float) -> int:
                 number_of_turns+=1
                 point0=point1
 
-    print(standard_deviation)
-    # print(number_of_turns)
-    plt.plot(t,signal)
-    plt.show()
+
     return number_of_turns
