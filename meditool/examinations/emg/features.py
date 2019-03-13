@@ -11,7 +11,7 @@ def arc_length(signal: np.ndarray, sample_rate: Union[int, float]) -> float:
 	:return: Float. Calculated arc length  
 	:rtype: float
     """
-    if type(signal) == np.ndarray) and type(sample_rate) == (int or float):
+    if (type(signal) == np.ndarray) and (type(sample_rate) in (int, float)):
 	return sfeatures.arc_length(signal, sample_rate)
     else:
         raise ValueError("Wrong variable types! Signal should be 1 dimensional numpy array, sample_rare should be int or float.")
